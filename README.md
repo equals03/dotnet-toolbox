@@ -11,7 +11,6 @@ distrobox create --image ghcr.io/equals03/dotnet-toolbox --name dotnet-toolbox
 distrobox enter dotnet-toolbox -- distrobox-export-all
 ```
 ... to automatically export the `Rider` app to the host.   
-Additionally the `rider` binary will be exported to `~/.local/bin`.
 
 To remove everything:
 ```sh
