@@ -19,6 +19,7 @@ env:
     IMAGE_NAME: dotnet-toolbox
     IMAGE_TAGS: latest
     IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
+    BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
 
 jobs:
   push-ghcr:
@@ -43,7 +44,7 @@ jobs:
           images: |
             ${{ env.IMAGE_NAME }}
           labels: |
-            io.artifacthub.package.readme-url=https://raw.githubusercontent.com/${{ github.repository_owner }}/${{ github.repository }}/master/README.md
+            io.artifacthub.package.readme-url=https://raw.githubusercontent.com/${{ github.repository }}/${{ env.BRANCH_NAME }}/README.md
 
       # Build image using Buildah action
       - name: Build Image
