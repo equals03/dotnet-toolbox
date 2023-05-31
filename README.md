@@ -19,7 +19,16 @@ distrobox enter dotnet-toolbox -- distrobox-export-all --delete
 ### Oh also...
 The binaries:
 1. `docker`
-2. `podman`  
+2. `docker-compose`
+3. `podman`  
+4. `google-chrome`
+5. `chromium`
+6. `firefox`
+7. `firefox-developer-edition`
+8. `opera`
+9. `microsoft-edge`
+10. `xdg-open`
+
 ... are symlinked to `distrobox-host-exec` so you should be able to control the host from within the toolbox.
 
 ## Building locally

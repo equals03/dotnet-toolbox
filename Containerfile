@@ -60,7 +60,16 @@ COPY  --from=distrobox --chmod=755 /build/distrobox-host-exec /build/host-spawn 
 COPY  --from=downloader --chmod=755 /build/distrobox-export-all /usr/bin
 
 RUN   ln -s /usr/bin/distrobox-host-exec /usr/bin/podman && \
-      ln -s /usr/bin/distrobox-host-exec /usr/bin/docker
+      ln -s /usr/bin/distrobox-host-exec /usr/bin/docker && \
+      ln -s /usr/bin/distrobox-host-exec /usr/bin/docker-compose && \
+      ln -s /usr/bin/distrobox-host-exec /usr/bin/google-chrome && \
+      ln -s /usr/bin/distrobox-host-exec /usr/bin/chromium && \
+      ln -s /usr/bin/distrobox-host-exec /usr/bin/firefox && \
+      ln -s /usr/bin/distrobox-host-exec /usr/bin/firefox-developer-edition && \
+      ln -s /usr/bin/distrobox-host-exec /usr/bin/opera && \
+      ln -s /usr/bin/distrobox-host-exec /usr/bin/microsoft-edge && \
+      ln -s /usr/bin/distrobox-host-exec /usr/bin/xdg-open
+      
 
 RUN   dnf update -y --allowerasing && \
       dnf install -y --allowerasing \
