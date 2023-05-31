@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# will call distrobox-export on all apps for easy
+# installation/removal
+
+distrobox-export --app RIDER_PACKAGE_NAME "$@"
+distrobox-export --bin /usr/bin/RIDER_PACKAGE_NAME --export-path ~/.local/bin "$@"
