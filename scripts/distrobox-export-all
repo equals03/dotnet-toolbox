@@ -4,3 +4,4 @@
 # installation/removal
 
 distrobox-export --app RIDER_PACKAGE_NAME "$@"
+distrobox-export --bin /usr/bin/dotnet --export-path "${DISTROBOX_HOST_HOME}/.local/bin" "$@"
