@@ -1,6 +1,6 @@
 ARG   RIDER_PACKAGE_NAME='rider'
 ARG   RIDER_PACKAGE_DESC='A cross-platform .NET IDE by JetBrains.'
-ARG   RIDER_PACKAGE_VERSION='2023.1.3'
+ARG   RIDER_PACKAGE_VERSION='2023.2'
 ARG   RIDER_PACKAGE_DIR="JetBrains Rider-${RIDER_PACKAGE_VERSION}"
 ARG   RIDER_SOURCE_FILE="JetBrains.Rider-${RIDER_PACKAGE_VERSION}.tar.gz"
 ARG   RIDER_INSTALL_DIR='/usr/share'
@@ -22,7 +22,7 @@ COPY  scripts/distrobox-export-all ./
 RUN   sed -i "s#Version=#Version=${RIDER_PACKAGE_VERSION}#g" "${RIDER_PACKAGE_NAME}.desktop" && \
       sed -i "s#Exec=#Exec=\"${RIDER_INSTALL_DIR}/${RIDER_PACKAGE_NAME}/bin/rider.sh\" %f#g" "${RIDER_PACKAGE_NAME}.desktop" && \
       sed -i "s/Comment=/Comment=${RIDER_PACKAGE_DESC}/g" "${RIDER_PACKAGE_NAME}.desktop" && \
-      
+
       sed -i "s#RIDER_PACKAGE_NAME#${RIDER_PACKAGE_NAME}#g" distrobox-export-all && \
 
       curl -O "https://download-cf.jetbrains.com/rider/${RIDER_SOURCE_FILE}" && \
@@ -69,7 +69,7 @@ RUN   ln -s /usr/bin/distrobox-host-exec /usr/bin/podman && \
       ln -s /usr/bin/distrobox-host-exec /usr/bin/opera && \
       ln -s /usr/bin/distrobox-host-exec /usr/bin/microsoft-edge && \
       ln -s /usr/bin/distrobox-host-exec /usr/bin/xdg-open
-      
+
 
 RUN   dnf update -y --allowerasing && \
       dnf install -y --allowerasing \
@@ -102,7 +102,7 @@ RUN   dnf update -y --allowerasing && \
             aspnetcore-runtime-7.0 \
             aspnetcore-runtime-6.0 \
             mono-complete && \
-            
+
       dnf clean all -y
 
 COPY  --from=downloader --chmod=644 "/build/${RIDER_PACKAGE_NAME}.desktop" "/usr/share/applications/${RIDER_PACKAGE_NAME}.desktop"

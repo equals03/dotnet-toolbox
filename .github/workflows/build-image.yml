@@ -31,11 +31,11 @@ jobs:
       id-token: write
     strategy:
       fail-fast: false
-    steps: 
+    steps:
       # Checkout push-to-registry action GitHub repository
       - name: Checkout Push to Registry action
         uses: actions/checkout@v3
-        
+
       # Build metadata
       - name: Image Metadata
         uses: docker/metadata-action@v4
@@ -57,7 +57,7 @@ jobs:
           tags: ${{ env.IMAGE_TAGS }}
           labels: ${{ steps.meta.outputs.labels }}
           oci: false
-          
+
       # Workaround bug where capital letters in your GitHub username make it impossible to push to GHCR.
       # https://github.com/macbre/push-to-ghcr/issues/12
       - name: Lowercase Registry
@@ -81,7 +81,7 @@ jobs:
           password: ${{ env.REGISTRY_PASSWORD }}
           extra-args: |
             --disable-content-trust
-            
+
       # Sign container
       - uses: sigstore/cosign-installer@main
 
